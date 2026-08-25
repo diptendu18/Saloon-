@@ -1,3 +1,44 @@
+(function () {
+  const INTRO_KEY = 'mtIntroShown';
+  if (sessionStorage.getItem(INTRO_KEY)) return;
+  sessionStorage.setItem(INTRO_KEY, '1');
+
+  const overlay = document.createElement('div');
+  overlay.className = 'intro-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+
+  const frame = document.createElement('div');
+  frame.className = 'intro-video-frame';
+
+  const video = document.createElement('video');
+  video.muted = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
+  video.preload = 'auto';
+  video.disablePictureInPicture = true;
+  video.src = 'assets/magic_touch_no_gemini.mp4';
+
+  frame.appendChild(video);
+  overlay.appendChild(frame);
+  document.body.appendChild(overlay);
+
+  let dismissed = false;
+  function dismiss() {
+    if (dismissed) return;
+    dismissed = true;
+    overlay.classList.add('intro-fade');
+    setTimeout(() => overlay.remove(), 550);
+  }
+
+  video.addEventListener('ended', dismiss);
+  video.addEventListener('error', dismiss);
+  video.play().catch(dismiss);
+
+  setTimeout(dismiss, 15000);
+})();
+
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
 if (menu && nav) {

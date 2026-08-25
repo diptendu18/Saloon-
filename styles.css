@@ -275,6 +275,12 @@ img{max-width:100%;display:block}
 .whatsapp-note{font-size:10px!important;color:var(--charcoal-soft)!important;text-align:center;margin:10px 0 0!important}
 .back-home{display:inline-block;color:var(--sage-dark);font-size:11px;margin-top:25px}
 
+/* Intro animation */
+.intro-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,var(--sage-tint),var(--ivory) 72%);opacity:1;transition:opacity .55s ease}
+.intro-overlay.intro-fade{opacity:0}
+.intro-video-frame{width:clamp(220px,18vw,280px);aspect-ratio:16/9;border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line);background:#0b0b0b}
+.intro-video-frame video{width:100%;height:100%;object-fit:contain;display:block;background:#0b0b0b}
+
 /* Responsive */
 @media(max-width:950px){
   .nav{gap:15px}
@@ -352,4 +358,5 @@ img{max-width:100%;display:block}
   .page-hero{padding:80px 20px 70px}
   .field-row{grid-template-columns:1fr}
   .booking-intro h1{font-size:42px}
+  .intro-video-frame{width:clamp(180px,50vw,240px)}
 }
