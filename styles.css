@@ -40,7 +40,7 @@ img{max-width:100%;display:block}
 /* Header */
 .site-header{height:84px;background:rgba(250,247,241,.92);backdrop-filter:blur(10px);color:var(--charcoal);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,92px);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line)}
 .brand,.footer-brand{display:flex;align-items:center;gap:12px}
-.brand-mark{width:42px;height:42px;border:1px solid var(--sage);border-radius:50%;display:grid;place-items:center;color:var(--sage-dark);font:600 22px var(--serif);font-style:italic;background:var(--sage-tint)}
+.brand-mark{width:48px;height:48px;flex:0 0 48px;object-fit:contain;border-radius:9px}
 .brand strong,.footer-brand strong{font:600 24px var(--serif);display:block;line-height:1;color:var(--charcoal)}
 .footer-brand strong{color:var(--deep-text)}
 .brand small,.footer-brand small{display:block;font-size:8px;letter-spacing:.14em;color:var(--charcoal-soft);margin-top:4px}
@@ -208,7 +208,7 @@ img{max-width:100%;display:block}
 
 /* Footer */
 .footer{background:var(--deep);color:var(--deep-text-soft);padding:36px clamp(24px,7vw,100px);display:flex;align-items:center;justify-content:space-between;gap:30px;border-top:1px solid rgba(239,234,224,.08)}
-.footer .brand-mark{border-color:var(--sage-light);color:var(--sage-light);background:rgba(239,234,224,.05)}
+.footer .brand-mark{width:36px;height:36px;box-sizing:content-box;padding:6px;background:#fff;border-radius:11px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 .footer-links{display:flex;gap:25px;font-size:11px}
 .footer-links a:hover{color:var(--sage-light)}
 .footer>p{font-size:10px}
@@ -234,7 +234,7 @@ img{max-width:100%;display:block}
 .about-intro-copy h2 em{font-style:normal;color:var(--sage-dark)}
 .about-intro-copy>p:not(.eyebrow){color:var(--charcoal-soft);font-size:15px;line-height:1.85;max-width:600px}
 .signature{margin-top:30px;padding-top:20px;border-top:1px solid var(--beige-line);display:flex;align-items:center;gap:14px}
-.signature-mark{width:44px;height:44px;border:1px solid var(--sage);border-radius:50%;display:grid;place-items:center;font:italic 21px var(--serif);color:var(--sage-dark);background:var(--sage-tint)}
+.signature-mark{width:44px;height:44px;flex:0 0 44px;object-fit:contain;border-radius:9px}
 .signature small{display:block;color:var(--charcoal-soft);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
 .signature strong{font:600 18px var(--serif);color:var(--charcoal)}
 .about-pillars{background:var(--beige)}
@@ -309,6 +309,7 @@ img{max-width:100%;display:block}
 @media(max-width:720px){
   .announcement{font-size:8px}
   .site-header{height:70px}
+  .brand-mark{width:38px;height:38px;flex:0 0 38px;border-radius:8px}
   .menu-toggle{display:block}
   .nav{display:none;position:absolute;top:70px;left:0;right:0;background:var(--ivory);padding:20px 24px;flex-direction:column;align-items:stretch;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
   .nav.open{display:flex}
