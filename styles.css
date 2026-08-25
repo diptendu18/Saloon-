@@ -102,15 +102,14 @@ img{max-width:100%;display:block}
 .rate-card,.home-rate-card{position:relative;overflow:hidden;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s}
 .rate-card:hover,.home-rate-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
 .rate-card.combo,.home-rate-card.combo{background:linear-gradient(160deg,var(--sage-tint),var(--white));border-color:var(--sage-light)}
-.rate-visual,.home-rate-visual{position:relative;display:flex;align-items:center;padding:22px;background:var(--beige);overflow:hidden}
-.rate-visual{height:170px;align-items:flex-end}
-.home-rate-visual{height:120px}
-.visual-icon,.home-rate-icon{position:relative;z-index:1;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:#fff;box-shadow:0 10px 22px rgba(92,122,103,.28)}
-.visual-icon{width:70px;height:70px;font-size:32px}
-.home-rate-icon{width:54px;height:54px;flex:0 0 54px;font-size:23px}
-.visual-label,.home-rate-label{position:relative;z-index:1;margin-left:16px;color:var(--charcoal);font:700 20px/1.15 var(--serif)}
-.home-rate-label{font-size:17px;max-width:230px}
-.visual-label em,.home-rate-label em{display:block;color:var(--sage-dark);font-style:normal}
+.rate-visual,.home-rate-visual{position:relative;overflow:hidden;background:var(--beige)}
+.rate-visual{aspect-ratio:4/3}
+.home-rate-visual{aspect-ratio:16/9}
+.rate-visual img,.home-rate-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .45s ease}
+.rate-card:hover .rate-visual img,.home-rate-card:hover .home-rate-visual img{transform:scale(1.06)}
+.visual-icon,.home-rate-icon{position:absolute;z-index:2;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.visual-icon{width:50px;height:50px;font-size:22px;left:14px;bottom:14px}
+.home-rate-icon{width:40px;height:40px;font-size:17px;left:12px;bottom:12px}
 .rate-body,.home-rate-body{padding:22px}
 .home-rate-body{padding:18px 20px 20px}
 .rate-number,.home-rate-number{font-size:10px;letter-spacing:.16em;color:var(--sage-dark);font-weight:800}
@@ -324,10 +323,9 @@ img{max-width:100%;display:block}
   .promise-strip small{font-size:8px}
   .section{padding:70px 20px}
   .rate-grid,.home-rate-grid{grid-template-columns:1fr;gap:17px}
-  .home-rate-visual{height:112px}
+  .home-rate-visual{aspect-ratio:16/10}
   .home-rate-body{padding:17px 18px 19px}
   .home-rate-body h3{font-size:18px}
-  .rate-visual{height:150px}
   .why-grid{grid-template-columns:1fr}
   .about-photo{min-height:360px}
   .about-photo img{min-height:360px}
