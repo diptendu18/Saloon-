@@ -3,12 +3,14 @@
   if (sessionStorage.getItem(INTRO_KEY)) return;
   sessionStorage.setItem(INTRO_KEY, '1');
 
+  const HOLD_MS = 2550; // time the full-screen intro stays up before fading out
+  const FADE_MS = 450;  // fade-in/out duration (matches styles.css transition)
+
+  document.documentElement.classList.add('intro-lock');
+
   const overlay = document.createElement('div');
   overlay.className = 'intro-overlay';
   overlay.setAttribute('aria-hidden', 'true');
-
-  const frame = document.createElement('div');
-  frame.className = 'intro-video-frame';
 
   const video = document.createElement('video');
   video.muted = true;
@@ -20,23 +22,26 @@
   video.disablePictureInPicture = true;
   video.src = 'assets/magic_touch_no_gemini.mp4';
 
-  frame.appendChild(video);
-  overlay.appendChild(frame);
+  overlay.appendChild(video);
   document.body.appendChild(overlay);
+
+  // double rAF so the initial opacity:0 paints before we transition to 1
+  requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('intro-in')));
 
   let dismissed = false;
   function dismiss() {
     if (dismissed) return;
     dismissed = true;
-    overlay.classList.add('intro-fade');
-    setTimeout(() => overlay.remove(), 550);
+    overlay.classList.remove('intro-in');
+    document.documentElement.classList.remove('intro-lock');
+    setTimeout(() => overlay.remove(), FADE_MS);
   }
 
   video.addEventListener('ended', dismiss);
   video.addEventListener('error', dismiss);
   video.play().catch(dismiss);
 
-  setTimeout(dismiss, 15000);
+  setTimeout(dismiss, HOLD_MS);
 })();
 
 const menu = document.querySelector('.menu-toggle');
