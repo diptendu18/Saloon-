@@ -34,7 +34,8 @@
 <p>Fill in your details. After submitting, WhatsApp will open with your booking message ready to send.</p>
 <form class="booking-form" id="bookingForm">
 <div class="field-row"><div class="field"><label for="name">Your Name</label><input id="name" name="name" type="text" placeholder="Enter your name" required></div><div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="Your phone number" required></div></div>
-<div class="field"><label for="service">Select Service</label><select id="service" name="service" required><option value="" selected disabled>Choose a service or package</option><optgroup label="Signature Packages"><option>Men's Smart Grooming Collection</option><option>Women's Monsoon Glow & Hair Care</option><option>Premium Hydra & Treatment Collection</option></optgroup><optgroup label="Beauty & Grooming Services"><option>Haircut & Styling</option><option>Hair Care / Hair Spa / Treatment</option><option>Skin Care / Facial / Cleanup / D-Tan</option><option>Makeup</option><option>Manicure & Pedicure</option><option>Threading & Hair Removal</option><option>Beard Trimming & Designing</option><option>Nail Services</option><option>Other service / Enquiry</option></optgroup></select></div>
+<div class="field"><label>Who are you booking for?</label><div class="gender-switch" role="tablist" aria-label="Choose Gents or Ladies services"><button type="button" class="gender-tab active" data-target="gents" role="tab" aria-selected="true">Gents</button><button type="button" class="gender-tab" data-target="ladies" role="tab" aria-selected="false">Ladies</button></div></div>
+<div class="field"><label for="service">Select Service</label><select id="service" name="service" required><option value="" selected disabled>Choose a service or package</option><optgroup label="Gents Services" data-gender="gents"><option>Men's Smart Grooming Collection</option><option>Haircut & Styling</option><option>Hair Care / Hair Spa / Treatment</option><option>Beard Trimming & Designing</option><option>Male Hair Colour</option><option>Shaving</option><option>Premium Hydra & Treatment Collection</option><option>Other service / Enquiry</option></optgroup><optgroup label="Ladies Services" data-gender="ladies" hidden><option>Women's Monsoon Glow & Hair Care</option><option>Haircut & Styling</option><option>Hair Care / Hair Spa / Treatment</option><option>Skin Care / Facial / Cleanup / D-Tan</option><option>Makeup</option><option>Manicure & Pedicure</option><option>Threading & Hair Removal</option><option>Ladies Hair Colour</option><option>Nail Services</option><option>Premium Hydra & Treatment Collection</option><option>Other service / Enquiry</option></optgroup></select></div>
 <div class="field-row"><div class="field"><label for="date">Preferred Date</label><input id="date" name="date" type="date" required></div><div class="field"><label for="time">Preferred Time</label><input id="time" name="time" type="time" required></div></div>
 <div class="field"><label for="message">Additional Note</label><textarea id="message" name="message" placeholder="Any special request? (optional)"></textarea></div>
 <button class="btn btn-primary booking-submit" type="submit">Send Booking on WhatsApp <span>↗</span></button>
@@ -43,6 +44,7 @@
 </section>
 </div>
 </main>
+<script src="script.js"></script>
 <script>
 const form=document.getElementById('bookingForm');
 const date=document.getElementById('date');
@@ -52,7 +54,8 @@ date.min=local;
 form.addEventListener('submit',function(e){
  e.preventDefault();
  const data=new FormData(form);
- const text=`✨ *New Booking Request — Magic Touch Unisex Saloon*%0A%0A👤 *Name:* ${encodeURIComponent(data.get('name'))}%0A📞 *Phone:* ${encodeURIComponent(data.get('phone'))}%0A💇 *Service:* ${encodeURIComponent(data.get('service'))}%0A📅 *Preferred Date:* ${encodeURIComponent(data.get('date'))}%0A⏰ *Preferred Time:* ${encodeURIComponent(data.get('time'))}%0A📝 *Note:* ${encodeURIComponent(data.get('message')||'None')}%0A%0A📍 Barasat, Kolkata`;
+ const bookingFor=document.querySelector('.gender-switch .gender-tab.active')?.textContent||'';
+ const text=`✨ *New Booking Request — Magic Touch Unisex Saloon*%0A%0A👤 *Name:* ${encodeURIComponent(data.get('name'))}%0A📞 *Phone:* ${encodeURIComponent(data.get('phone'))}%0A🚻 *Booking For:* ${encodeURIComponent(bookingFor)}%0A💇 *Service:* ${encodeURIComponent(data.get('service'))}%0A📅 *Preferred Date:* ${encodeURIComponent(data.get('date'))}%0A⏰ *Preferred Time:* ${encodeURIComponent(data.get('time'))}%0A📝 *Note:* ${encodeURIComponent(data.get('message')||'None')}%0A%0A📍 Barasat, Kolkata`;
  window.location.href=`https://wa.me/916290670052?text=${text}`;
 });
 </script>
