@@ -1,0 +1,8 @@
+{
+  "name": "Magic Touch Unisex Saloon",
+  "description": "Magic Touch Unisex Saloon in Barasat, Kolkata — hair care, styling, skin care, nail services, makeup and grooming.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

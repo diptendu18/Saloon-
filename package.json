@@ -1,0 +1,15 @@
+{
+  "name": "magic-touch-unisex-saloon",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static build ready'",
+    "lint": "node --check server.js script.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
